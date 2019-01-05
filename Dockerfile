@@ -22,8 +22,28 @@ ENV APACHE_LOG_DIR /var/log/apache2
 ENV APACHE_LOCK_DIR /var/lock/apache2
 ENV APACHE_PID_FILE /var/run/apache2.pid
 
+# Error docs
+COPY /error_docs /var/www/error_docs
+
+# App directory
+RUN mkdir /var/www/app
+
+# Public directory
+COPY /public /var/www/app/public
+
 # Apache vhost config
-ADD apache-config.conf /etc/apache2/sites-enabled/000-default.conf
+COPY config/apache-config.conf /etc/apache2/sites-enabled/000-default.conf
+
+# Supervisor config
+COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+# Docker config
+RUN mkdir /docker-config
+COPY config/config /docker-config/apache2
+
+# Run script
+COPY scripts/run.sh /run.sh
+RUN chmod 755 /run.sh
 
 # Port
 EXPOSE 80

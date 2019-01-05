@@ -1,0 +1,4 @@
+{
+    "codeDirectory": "/var/www/app",
+    "publicDirectory": "/var/www/app/public"
+}
