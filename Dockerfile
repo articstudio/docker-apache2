@@ -1,4 +1,4 @@
-FROM articstudio/apache2
+FROM articstudio/ubuntu
 MAINTAINER Artic <developers@articstudio.com>
 
 ENV DEBIAN_FRONTEND noninteractive
