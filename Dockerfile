@@ -4,10 +4,10 @@ MAINTAINER Artic <developers@articstudio.com>
 ENV DEBIAN_FRONTEND noninteractive
 
 # Update / Install dependencies
-RUN apt-get update; \
-    DEBIAN_FRONTEND=noninteractive apt-get install -qy apache2 software-properties-common supervisor; \
-    apt-get clean; \
-    apt-get autoremove; \
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -qy apache2 software-properties-common supervisor \
+    && apt-get clean \
+    && apt-get autoremove \
     && rm -fr /var/lib/apt/lists/*;
 
 # Apache MODS
