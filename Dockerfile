@@ -49,4 +49,4 @@ RUN chmod 755 /run.sh
 EXPOSE 80
 
 # Start apache
-CMD /usr/sbin/apache2ctl -D FOREGROUND
+CMD ["/run.sh"]
